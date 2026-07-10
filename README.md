@@ -4,13 +4,11 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Research](https://img.shields.io/badge/Type-Research-red)](#)
 
----
 
 ## 📌 Tổng quan
 
 Dự án nghiên cứu chuyên sâu về **Tấn công từ chối dịch vụ phân tán (DDoS)** và các giải pháp phòng chống. Báo cáo hệ thống hóa kiến thức từ lý thuyết đến thực nghiệm, bao gồm mô phỏng tấn công bằng các công cụ phổ biến và triển khai các lớp phòng thủ đa tầng.
 
----
 
 ## 🎯 Mục tiêu
 
@@ -18,8 +16,6 @@ Dự án nghiên cứu chuyên sâu về **Tấn công từ chối dịch vụ p
 - ⚔️ Mô phỏng tấn công SYN Flood, UDP Flood, ICMP Flood, HTTP Flood.
 - 🐍 Xây dựng mạng botnet đơn giản bằng Python (Py-Botnet).
 - 🛡️ Triển khai giải pháp phòng chống: IPtables, Snort IDS, Packet Sniffer Python.
-
----
 
 ## ⚙️ Công nghệ sử dụng
 
@@ -39,8 +35,6 @@ Dự án nghiên cứu chuyên sâu về **Tấn công từ chối dịch vụ p
 **Môi trường**
 - Python 3.10+
 - Ubuntu Linux / VMware Lab
-
----
 
 ## 📁 Cấu trúc dự án
 
@@ -66,8 +60,6 @@ ddos-attack-defense/
         ├── python-sniffer/
         └── snort/
 ```
-
----
 
 ## 🚀 Hướng dẫn cài đặt & chạy
 
@@ -224,8 +216,6 @@ python3 packet_sniffer.py
 
 *(Lưu ý: Packet Sniffer là công cụ phân tích lưu lượng, không phải tấn công. Nó giúp xác định nguồn tấn công và loại tấn công.)*
 
----
-
 ## 📸 Kết quả thực nghiệm
 
 ### 1. Server Py-Botnet điều khiển bot
@@ -249,8 +239,6 @@ python3 packet_sniffer.py
 
 *Wireshark ghi nhận hàng loạt gói tin UDP từ bot gửi đến cổng 80 của mục tiêu, mỗi gói có kích thước lớn (2048 bytes).*
 
----
-
 ## 🛡️ Giải pháp phòng chống
 
 **IPtables**
@@ -266,7 +254,6 @@ python3 packet_sniffer.py
 - Phân tích lưu lượng mạng
 - Xác định nguồn và loại tấn công
 
-
 ## ⚠️ Disclaimer
 
 > **Dự án này chỉ dành cho mục đích học tập và nghiên cứu.**  
@@ -277,7 +264,6 @@ python3 packet_sniffer.py
 
 Việc sử dụng trái phép có thể vi phạm pháp luật. Người dùng tự chịu trách nhiệm về hành vi của mình.
 
-
 ## 👥 Tác giả
 
 - **Nguyễn Trung Kiên** – AT200432
@@ -286,11 +272,8 @@ Việc sử dụng trái phép có thể vi phạm pháp luật. Người dùng 
 - **Nguyễn Công Khánh** – AT200131
 - **Đinh Trí Đức** – AT200114
 
-
 ## 📄 Giấy phép
 
 Dự án được phân phối dưới giấy phép MIT. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
-
----
 
 *Hà Nội – 2026*
