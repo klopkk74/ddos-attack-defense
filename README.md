@@ -223,17 +223,21 @@ Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ 
 ### 1. ICMP Flood (Hping3)
 
 <img width="601" height="132" alt="result-attack" src="https://github.com/user-attachments/assets/8ce21768-a41d-434c-aad2-01bfb900de62" />
+
 *Tốc độ nhận tăng vọt lên 49.6 Mbps, hệ thống bắt đầu bị quá tải.*
 
 <img width="1020" height="720" alt="wireshark-imcp" src="https://github.com/user-attachments/assets/26f9caa6-5112-4395-9d52-0aaf1bc3a5a9" />
+
 *Wireshark ghi nhận hàng loạt gói tin ICMP từ máy tấn công.*
 
 ### 2. SYN Flood (Hping3)
 
 <img width="663" height="590" alt="after-attack" src="https://github.com/user-attachments/assets/189ccff7-d614-4cf9-8c23-915813e8d6b7" />
+
 *CPU tăng lên 31%, Memory 93%, tốc độ nhận lên tới 439 Mbps.*
 
 <img width="1008" height="631" alt="wireshark-syn" src="https://github.com/user-attachments/assets/8a52a76a-6ab1-4a46-9ceb-9a5060dc71cf" />
+
 *Wireshark ghi nhận hàng loạt gói tin SYN từ nhiều IP giả mạo.*
 
 ### 3. HTTP Flood (Slowhttptest)
@@ -241,31 +245,39 @@ Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ 
 **HTTP GET Flood (Slowloris):**
 
 <img width="602" height="530" alt="slowhttptest-get" src="https://github.com/user-attachments/assets/195d6aaf-f7ee-4aaf-a82a-c41d7c212729" />
+
 *Kết quả tấn công GET: 660 kết nối đang hoạt động, dịch vụ không khả dụng.*
 
 <img width="917" height="582" alt="image" src="https://github.com/user-attachments/assets/84a40be8-0d68-4412-a3f3-bcfed3a80dca" />
+
 *Biểu đồ báo cáo cho thấy Service available giảm về 0.*
 
 **HTTP POST Flood (Slow POST):**
 
 <img width="942" height="630" alt="image" src="https://github.com/user-attachments/assets/22df89f8-33f6-46bb-84db-f0ac53315a35" />
+
 *Kết quả tấn công POST: 660 kết nối đang hoạt động, dịch vụ không khả dụng.*
 
 <img width="989" height="567" alt="image" src="https://github.com/user-attachments/assets/92de4a3b-0fad-4ca4-91c1-c842f5f1a58a" />
+
 *Biểu đồ báo cáo tương tự, Service available giảm về 0.*
 
 <img width="965" height="546" alt="image" src="https://github.com/user-attachments/assets/97239537-b1ea-45f9-8e37-d272f5b8b2d9" />
+
 *Web server ngừng phản hồi, không thể truy cập.*
 
 ### 4. Py-Botnet (Botnet Python)
 
 <img width="965" height="505" alt="image" src="https://github.com/user-attachments/assets/126bb692-338a-4733-bed8-65615810713e" />
+
 *Server hiển thị danh sách bot đã kết nối và lệnh tấn công.*
 
 <img width="1001" height="688" alt="image" src="https://github.com/user-attachments/assets/1dfdcb7c-a7b7-4005-8d74-c773807bb693" />
+
 *CPU tăng 34%, Memory 93%, tốc độ nhận 270 Mbps.*
 
 <img width="999" height="544" alt="image" src="https://github.com/user-attachments/assets/eb25f6f9-517e-49d6-9513-33b72f7c4fe6" />
+
 *Wireshark ghi nhận hàng loạt gói tin UDP với dữ liệu rác (ký tự "A").*
 
 ### 5. Phòng chống với IPtables
@@ -277,17 +289,21 @@ Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ 
 *Giới hạn số lượng gói SYN/giây, chỉ 1 gói được ACCEPT, còn lại bị DROP.*
 
 <img width="888" height="410" alt="image" src="https://github.com/user-attachments/assets/67f72588-80fa-4196-8a78-3237cd9d9caf" />
+
 *1383K gói tin ICMP (39MB) bị chặn hoàn toàn.*
 
 <img width="1038" height="381" alt="image" src="https://github.com/user-attachments/assets/db48e412-94c8-406b-b09e-59822e4b8f1a" />
+
 *1026K gói tin UDP (29MB) bị chặn.*
 
 ### 6. Phát hiện tấn công với Snort IDS
 
 <img width="930" height="540" alt="image" src="https://github.com/user-attachments/assets/c83ae9d8-19b9-4ca2-8f58-36fe879796b5" />
+
 *Snort phát hiện và cảnh báo ICMP Flood.*
 
 <img width="934" height="529" alt="image" src="https://github.com/user-attachments/assets/9ca1b389-6aa8-4e56-8a6d-9db4bd9c6c60" />
+
 *Snort phát hiện và cảnh báo SYN Flood.*
 
 ### 7. Phân tích lưu lượng với Packet Sniffer Python
@@ -299,12 +315,15 @@ Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ 
 *Phát hiện chính xác các gói tin ICMP, SYN, UDP với số lượng lớn.*
 
 <img width="1039" height="449" alt="image" src="https://github.com/user-attachments/assets/d4629607-a6ed-4661-8b0a-ea7f9d031aa8" />
+
 *Phát hiện số lượng lớn request HTTP GET và POST.*
 
 <img width="1039" height="475" alt="image" src="https://github.com/user-attachments/assets/a25622aa-169a-4bcb-b6ee-22b0d9bef76d" />
+
 *Phát hiện tấn công DDoS.*
 
 <img width="1039" height="475" alt="image" src="https://github.com/user-attachments/assets/3cc77c1c-0fcd-4346-8185-c782494d5c70" />
+
 *Phát hiện đầy đủ các dạng tấn công trong môi trường đa tấn công.*
 
 ## 🛡️ Giải pháp phòng chống
