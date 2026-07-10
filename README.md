@@ -218,32 +218,94 @@ python3 packet_sniffer.py
 
 ## 📸 Kết quả thực nghiệm
 
-### 1. Server Py-Botnet điều khiển bot
+Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ ảnh được tổ chức trong thư mục [`images/`](images/).
 
-<!-- Thêm ảnh: images/py-botnet/server-commands.png -->
-<img width="1039" height="449" alt="image" src="https://github.com/user-attachments/assets/77bb525d-4f79-49df-92bd-98d972dc6ddf" />
+### 1. ICMP Flood (Hping3)
 
+<img width="601" height="132" alt="result-attack" src="https://github.com/user-attachments/assets/8ce21768-a41d-434c-aad2-01bfb900de62" />
+*Tốc độ nhận tăng vọt lên 49.6 Mbps, hệ thống bắt đầu bị quá tải.*
 
-*Server hiển thị danh sách bot đã kết nối, các lệnh điều khiển (list, attack, kill) và lệnh tấn công UDP Flood được gửi đến mục tiêu.*
+<img width="1020" height="720" alt="wireshark-imcp" src="https://github.com/user-attachments/assets/26f9caa6-5112-4395-9d52-0aaf1bc3a5a9" />
+*Wireshark ghi nhận hàng loạt gói tin ICMP từ máy tấn công.*
 
-### 2. Tác động lên hệ thống mục tiêu
+### 2. SYN Flood (Hping3)
 
-<!-- Thêm ảnh: images/py-botnet/after-attack.png -->
-<img width="666" height="590" alt="after-attack" src="https://github.com/user-attachments/assets/7d7af947-c506-4b05-b48d-19216a354b37" />
+<img width="663" height="590" alt="after-attack" src="https://github.com/user-attachments/assets/189ccff7-d614-4cf9-8c23-915813e8d6b7" />
+*CPU tăng lên 31%, Memory 93%, tốc độ nhận lên tới 439 Mbps.*
 
+<img width="1008" height="631" alt="wireshark-syn" src="https://github.com/user-attachments/assets/8a52a76a-6ab1-4a46-9ceb-9a5060dc71cf" />
+*Wireshark ghi nhận hàng loạt gói tin SYN từ nhiều IP giả mạo.*
 
-*Sau khi tấn công, CPU tăng lên 34%, Memory chiếm 93%, tốc độ nhận lên tới 270 Mbps.*
+### 3. HTTP Flood (Slowhttptest)
 
-### 3. Phân tích lưu lượng tấn công
+**HTTP GET Flood (Slowloris):**
 
-<!-- Thêm ảnh: images/py-botnet/wireshark-traffic.png -->
-<img width="1021" height="611" alt="wireshark-traffic" src="https://github.com/user-attachments/assets/33fde022-4a7a-4fbc-ab6e-88c2ba98d3a2" />
+<img width="602" height="530" alt="slowhttptest-get" src="https://github.com/user-attachments/assets/195d6aaf-f7ee-4aaf-a82a-c41d7c212729" />
+*Kết quả tấn công GET: 660 kết nối đang hoạt động, dịch vụ không khả dụng.*
 
+<img width="917" height="582" alt="image" src="https://github.com/user-attachments/assets/84a40be8-0d68-4412-a3f3-bcfed3a80dca" />
+*Biểu đồ báo cáo cho thấy Service available giảm về 0.*
 
-*Wireshark ghi nhận hàng loạt gói tin UDP từ bot gửi đến cổng 80 của mục tiêu, mỗi gói có kích thước lớn (2048 bytes).*
+**HTTP POST Flood (Slow POST):**
 
-![Uploading image.png…]()
+<img width="942" height="630" alt="image" src="https://github.com/user-attachments/assets/22df89f8-33f6-46bb-84db-f0ac53315a35" />
+*Kết quả tấn công POST: 660 kết nối đang hoạt động, dịch vụ không khả dụng.*
 
+<img width="989" height="567" alt="image" src="https://github.com/user-attachments/assets/92de4a3b-0fad-4ca4-91c1-c842f5f1a58a" />
+*Biểu đồ báo cáo tương tự, Service available giảm về 0.*
+
+<img width="965" height="546" alt="image" src="https://github.com/user-attachments/assets/97239537-b1ea-45f9-8e37-d272f5b8b2d9" />
+*Web server ngừng phản hồi, không thể truy cập.*
+
+### 4. Py-Botnet (Botnet Python)
+
+<img width="965" height="505" alt="image" src="https://github.com/user-attachments/assets/126bb692-338a-4733-bed8-65615810713e" />
+*Server hiển thị danh sách bot đã kết nối và lệnh tấn công.*
+
+<img width="1001" height="688" alt="image" src="https://github.com/user-attachments/assets/1dfdcb7c-a7b7-4005-8d74-c773807bb693" />
+*CPU tăng 34%, Memory 93%, tốc độ nhận 270 Mbps.*
+
+<img width="999" height="544" alt="image" src="https://github.com/user-attachments/assets/eb25f6f9-517e-49d6-9513-33b72f7c4fe6" />
+*Wireshark ghi nhận hàng loạt gói tin UDP với dữ liệu rác (ký tự "A").*
+
+### 5. Phòng chống với IPtables
+
+<img width="955" height="371" alt="image" src="https://github.com/user-attachments/assets/903d3252-8646-437e-b4f4-abbcc2f5eab8" />
+*Chặn địa chỉ IP tấn công, không nhận được phản hồi.*
+
+<img width="945" height="400" alt="image" src="https://github.com/user-attachments/assets/28834e0f-0a62-4bf6-893a-349d88060990" />
+*Giới hạn số lượng gói SYN/giây, chỉ 1 gói được ACCEPT, còn lại bị DROP.*
+
+<img width="888" height="410" alt="image" src="https://github.com/user-attachments/assets/67f72588-80fa-4196-8a78-3237cd9d9caf" />
+*1383K gói tin ICMP (39MB) bị chặn hoàn toàn.*
+
+<img width="1038" height="381" alt="image" src="https://github.com/user-attachments/assets/db48e412-94c8-406b-b09e-59822e4b8f1a" />
+*1026K gói tin UDP (29MB) bị chặn.*
+
+### 6. Phát hiện tấn công với Snort IDS
+
+<img width="930" height="540" alt="image" src="https://github.com/user-attachments/assets/c83ae9d8-19b9-4ca2-8f58-36fe879796b5" />
+*Snort phát hiện và cảnh báo ICMP Flood.*
+
+<img width="934" height="529" alt="image" src="https://github.com/user-attachments/assets/9ca1b389-6aa8-4e56-8a6d-9db4bd9c6c60" />
+*Snort phát hiện và cảnh báo SYN Flood.*
+
+### 7. Phân tích lưu lượng với Packet Sniffer Python
+
+<img width="1038" height="457" alt="image" src="https://github.com/user-attachments/assets/00426a60-41a4-4aca-8fcf-7e10d1bc61fb" />
+*Lưu lượng ping bình thường không bị phát hiện là tấn công.*
+
+<img width="1039" height="517" alt="image" src="https://github.com/user-attachments/assets/4c0eb049-8d1e-4655-bb25-bb080902edae" />
+*Phát hiện chính xác các gói tin ICMP, SYN, UDP với số lượng lớn.*
+
+<img width="1039" height="449" alt="image" src="https://github.com/user-attachments/assets/d4629607-a6ed-4661-8b0a-ea7f9d031aa8" />
+*Phát hiện số lượng lớn request HTTP GET và POST.*
+
+<img width="1039" height="475" alt="image" src="https://github.com/user-attachments/assets/a25622aa-169a-4bcb-b6ee-22b0d9bef76d" />
+*Phát hiện tấn công DDoS.*
+
+<img width="1039" height="475" alt="image" src="https://github.com/user-attachments/assets/3cc77c1c-0fcd-4346-8185-c782494d5c70" />
+*Phát hiện đầy đủ các dạng tấn công trong môi trường đa tấn công.*
 
 ## 🛡️ Giải pháp phòng chống
 
