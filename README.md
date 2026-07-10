@@ -218,8 +218,6 @@ python3 packet_sniffer.py
 
 ## 📸 Kết quả thực nghiệm
 
-Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ ảnh được tổ chức trong thư mục [`images/`](images/).
-
 ### 1. ICMP Flood (Hping3)
 
 <img width="601" height="132" alt="result-attack" src="https://github.com/user-attachments/assets/8ce21768-a41d-434c-aad2-01bfb900de62" />
@@ -325,6 +323,8 @@ Dưới đây là các hình ảnh từ quá trình thực nghiệm. Toàn bộ 
 <img width="1039" height="475" alt="image" src="https://github.com/user-attachments/assets/3cc77c1c-0fcd-4346-8185-c782494d5c70" />
 
 *Phát hiện đầy đủ các dạng tấn công trong môi trường đa tấn công.*
+
+📁 **Xem toàn bộ ảnh:** [images/](images/)
 
 ## 🛡️ Giải pháp phòng chống
 
