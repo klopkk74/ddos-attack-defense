@@ -221,23 +221,29 @@ python3 packet_sniffer.py
 ### 1. Server Py-Botnet điều khiển bot
 
 <!-- Thêm ảnh: images/py-botnet/server-commands.png -->
-![Server Py-Botnet](images/py-botnet/server-commands.png)
+<img width="1039" height="449" alt="image" src="https://github.com/user-attachments/assets/77bb525d-4f79-49df-92bd-98d972dc6ddf" />
+
 
 *Server hiển thị danh sách bot đã kết nối, các lệnh điều khiển (list, attack, kill) và lệnh tấn công UDP Flood được gửi đến mục tiêu.*
 
 ### 2. Tác động lên hệ thống mục tiêu
 
 <!-- Thêm ảnh: images/py-botnet/after-attack.png -->
-![Tác động tấn công](images/py-botnet/after-attack.png)
+<img width="666" height="590" alt="after-attack" src="https://github.com/user-attachments/assets/7d7af947-c506-4b05-b48d-19216a354b37" />
+
 
 *Sau khi tấn công, CPU tăng lên 34%, Memory chiếm 93%, tốc độ nhận lên tới 270 Mbps.*
 
 ### 3. Phân tích lưu lượng tấn công
 
 <!-- Thêm ảnh: images/py-botnet/wireshark-traffic.png -->
-![Wireshark bắt gói tin](images/py-botnet/wireshark-traffic.png)
+<img width="1021" height="611" alt="wireshark-traffic" src="https://github.com/user-attachments/assets/33fde022-4a7a-4fbc-ab6e-88c2ba98d3a2" />
+
 
 *Wireshark ghi nhận hàng loạt gói tin UDP từ bot gửi đến cổng 80 của mục tiêu, mỗi gói có kích thước lớn (2048 bytes).*
+
+![Uploading image.png…]()
+
 
 ## 🛡️ Giải pháp phòng chống
 
